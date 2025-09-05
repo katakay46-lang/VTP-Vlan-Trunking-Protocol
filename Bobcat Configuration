@@ -1,0 +1,59 @@
+Bobcat
+
+en
+conf t
+
+vlan 10
+name Tigers
+vlan 20 
+name Lions
+vlan 30
+name Panthers
+exit
+
+vtp mode server
+
+vtp domain GNS3Vault
+vtp pass Vault
+
+inter giga 1/0
+sw trun encap dot1
+sw mode trunk
+end
+
+sh vla
+
+
+Tiger
+en
+conf t 
+
+vtp mode transparent
+
+vtp domain GNS3Vault
+vtp password Vault
+
+inter rang giga 1/0-1
+sw trun encap dot1
+sw mode trunk 
+end
+
+sh vlan
+
+Panther
+en
+conf t 
+
+vtp mode client
+
+vtp domain GNS3Vault
+vtp password Vault
+
+inter giga 1/1
+sw trun encap dot1
+sw mode trunk 
+
+
+
+sh vlan
+
